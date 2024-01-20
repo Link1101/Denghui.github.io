@@ -1,0 +1,77 @@
+<div id="ball1" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<div id="ball2" style="
+z-index:5;
+position:absolute;
+left:0px;
+top:0px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:red"></div>
+
+<script>
+
+var velocityX1 = 18, velocityY1 = 10, positionX1 = 0, positionY1 = 0;
+var velocityX2 = 15, velocityY2 = 25, positionX2 = 100, positionY2 = 0; // Different initial position
+var ball1 = document.getElementById('ball1');
+var ball2 = document.getElementById('ball2');
+var ballSize = 50; // Assuming both balls have the same size
+
+function moveBall(ball, positionX, positionY, velocityX, velocityY) {
+    var Xmin = 0, Xmax = window.innerWidth - ballSize;
+    var Ymin = 0, Ymax = window.innerHeight - ballSize;
+
+    // Update positions
+    positionX += velocityX;
+    positionY += velocityY;
+
+    // Edge collision detection
+    if (positionX >= Xmax || positionX <= Xmin) {
+        velocityX = -velocityX;
+    }
+    if (positionY >= Ymax || positionY <= Ymin) {
+        velocityY = -velocityY;
+    }
+
+    // Update the ball's position
+    ball.style.left = positionX + 'px';
+    ball.style.top = positionY + 'px';
+
+    return [positionX, positionY, velocityX, velocityY];
+}
+
+function ballsCollision() {
+    var dx = positionX1 - positionX2;
+    var dy = positionY1 - positionY2;
+    var distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Check if balls are colliding
+    if (distance < ballSize) {
+        // Simple collision response: reverse velocities
+        velocityX1 = -velocityX1;
+        velocityY1 = -velocityY1;
+        velocityX2 = -velocityX2;
+        velocityY2 = -velocityY2;
+    }
+}
+
+function updateBalls() {
+    [positionX1, positionY1, velocityX1, velocityY1] = moveBall(ball1, positionX1, positionY1, velocityX1, velocityY1);
+    [positionX2, positionY2, velocityX2, velocityY2] = moveBall(ball2, positionX2, positionY2, velocityX2, velocityY2);
+
+    ballsCollision();
+}
+
+setInterval(updateBalls, 100);
+
+
+</script>
