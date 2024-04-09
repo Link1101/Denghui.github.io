@@ -59,7 +59,7 @@ section {
     margin-top: 20px;
 }
 
-/* Projects grid layout - if you have multiple projects */
+/* Projects grid layout - only for if multiple projects */
 #projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates a responsive grid */
