@@ -1,16 +1,24 @@
 
+/* Google Font Import  */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-/* Navigation Bar styles */
-nav ul {
-    list-style-type: none;
+/* Apply the font family throughout the website */
+body {
+    font-family: 'Open+Sans', sans-serif;
+    color: #333; /* Dark grey for readability */
+    background: #f4f4f4; /* Lighter background */
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
 }
 
-nav li {
-    float: left;
+/* Navigation styles using grid */
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* adjust number based on nav items */
+    list-style-type: none;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 nav li a {
@@ -21,21 +29,47 @@ nav li a {
     text-decoration: none;
 }
 
-nav li a:hover {
+nav li a:hover, nav li a:focus {
     background-color: #111;
+    outline: none;
 }
 
-/* Clear floats after the columns */
-nav:after {
-    content: "";
-    display: table;
-    clear: both;
+/* Link styles */
+a {
+    color: #0066cc; /* Change color */
+    text-decoration: none; /* Remove underline */
 }
 
-/* Style for the sections to add some spacing */
+a:hover, a:focus {
+    text-decoration: underline; /* Underline on hover for clarity */
+    color: #004499; /* Darker shade on hover */
+}
+
+/* Style adjustments for images and other content */
+img {
+    max-width: 100%; /* Make images responsive */
+    height: auto;
+    display: block; /* Remove default inline styling */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Additional spacing for bio and projects sections */
 section {
     padding: 20px;
     margin-top: 20px;
 }
 
+/* Projects grid layout - if you have multiple projects */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates a responsive grid */
+    gap: 20px; /* Space between items */
+}
 
+/* Project item style */
+.project-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
